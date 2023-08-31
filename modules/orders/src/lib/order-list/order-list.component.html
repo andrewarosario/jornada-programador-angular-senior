@@ -1,2 +1,16 @@
-<p>order-list works!</p>
-<lib-ui></lib-ui>
+<h1>Envie seu feedback</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div style="display: flex">
+    <label>
+      Sua avaliação:
+      <lib-star-rating formControlName="rating"></lib-star-rating>
+    </label>
+  </div>
+  <div>
+    <label>Quer informar um comentário?</label>
+    <input formControlName="comment" />
+  </div>
+  <button type="submit" [disabled]="form.invalid">Submit</button>
+
+  <pre>{{ form.value | json }}</pre>
+</form>

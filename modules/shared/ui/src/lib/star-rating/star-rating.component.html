@@ -1,0 +1,26 @@
+<i>{{ displayText }}</i>
+<div role="radiogroup" class="stars" [ngClass]="{ disabled }">
+  <ng-container *ngFor="let rating of ratings">
+    <span
+      role="radio"
+      [attr.aria-label]="rating.text"
+      tabindex="0"
+      (click)="setRating(rating)"
+      (keydown.enter)="setRating(rating)"
+    >
+      <svg
+        height="25"
+        width="23"
+        class="star rating"
+        [ngClass]="{ selected: rating.stars <= value }"
+        (mouseover)="displayText = !disabled ? rating.text : ''"
+        (mouseout)="displayText = ratingText ? ratingText : ''"
+      >
+        <polygon
+          points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78"
+          style="fill-rule: nonzero"
+        />
+      </svg>
+    </span>
+  </ng-container>
+</div>
